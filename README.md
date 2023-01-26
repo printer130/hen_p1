@@ -28,6 +28,4 @@ e)  Peliculas que son exclusiva de una sola plataforma (hay que ingresar la plat
 
 f)  Autor o Autores que posean la mayor cantidad de peliculas filtrado por plataforma.
 
-Pueden usar Google Colab, jupyter o los notebook de VSC, pero los archivos deben estar subidos a github. Deberán aprender a usar codigo de github o usar Github Desktop. 
-
 El código debe estar comentado, con nombre y apellido explicando y justificando las medidas tomadas. Lo más ordenado posible y llevar registro de las modificaciones hechas.
