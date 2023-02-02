@@ -44,6 +44,8 @@ df_conc["cast"].fillna("Unknown actors", inplace=True)
 # en la plataforma de Hulu
 ''' print(hulu_df["listed_in"].str.split(', ',expand=True).stack().value_counts()) '''
 
+##################################################
+
 # b) Actor que más se repite según plataforma y año. (Dificil)
 # En la plataforma de Disney el actor que mas se repite
 ''' disney_df["cast"] = disney_df["cast"].str.split(", ")
@@ -63,6 +65,8 @@ print(res) '''
 grouped = res_df.groupby(["release_year"])
 res = grouped["cast"].value_counts().sort_values().to_string()
 print(res) '''
+
+##################################################
 
 # c)  Cantidad de películas y series (separado) por plataforma. (Medio)
 '''
@@ -84,29 +88,15 @@ print(hulu_df[hulu_df["type"] == "Movie"].shape) '''
 
 #d) Máxima duración según tipo de film (película/serie), por plataforma y por año (Medio)
 grp = amazon_df[amazon_df["type"] == "Movie"].groupby(by=["release_year"], group_keys=True).apply(lambda x: x)
+#\d+ min,
 grp["duration"] = grp["duration"].str.extract("(\d+)").astype(int)
-#^min$|.*\d+.*
-#print(grp["duration"].max())
+
+print(grp)
+
 ##################################################
-##################################################
-#print(grp.loc[grp.groupby("release_year")["duration"].idxmax()].reset_index())
-#df.groupby("release_year")["duration"].max()
-
-
-#print(grp.loc[grp['duration'].idxmax()])
-#max_duration_row = grp.loc[grp['duration'].idxmax()]
-
-#print(df_conc.groupby(["release_year"])[df_conc["type"] == "Movie"]["cast"].str.split(', ', expand=True).stack().value_counts())
-
-
-#print(df_conc.loc[df_conc["type"] == "TV Show", ["release_year", "cast"]].value_counts())
-
-#print(df_conc[df_conc["type"] == "TV Show"]["release_year"].value_counts())
-# Get all words
-#res = df_conc[df_conc['listed_in'].str.istitle()]
 
 #e)  Peliculas que son exclusiva de una sola plataforma (hay que ingresar la plataforma ej. Netflix y debe retornar todas las peliculas que no aparezcan en las otras plataformas.
-def get_movies_by_platform(platform):
+''' def get_movies_by_platform(platform):
   dicc = {
     "amazon": "amazon_prime_titles",
     "disney": "disney_plus_titles",
@@ -119,7 +109,9 @@ def get_movies_by_platform(platform):
   # Devolvemos las columnas que son peliculas (Movie)
   return df[df["type"] == "Movie"]
 movies = get_movies_by_platform("amazon")
-print(movies)
+print(movies) '''
+
+##################################################
 
 #f)  Autor o Autores que posean la mayor cantidad de peliculas filtrado por plataforma.
 #50 Autores (directores) que posean mayor cantidad de peliculas en la plataforma de Amazon
